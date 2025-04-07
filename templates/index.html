@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ASO LSI Analyzer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      color: #333;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      border-radius: 10px;
+      max-width: 900px;
+      margin: auto;
+      padding: 30px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    textarea, input {
+      width: 100%;
+      margin: 5px 0 15px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .submit-btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block;
+      margin: auto;
+    }
+    .submit-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>ASO LSI Analyzer</h1>
+    <form action="/analyze" method="post">
+      <label>Your App Title</label>
+      <input type="text" name="title" required>
+      
+      <label>Your App Subtitle</label>
+      <input type="text" name="subtitle" required>
+      
+      <label>Your App Long Description</label>
+      <textarea name="description" rows="5" required></textarea>
+
+      <label>Category</label>
+      <input type="text" name="category" placeholder="e.g., Finance, Health" required>
+
+      <label>Custom LSI Keywords (comma-separated)</label>
+      <input type="text" name="custom_lsi" placeholder="e.g., crypto, wallet, secure, bitcoin">
+
+      <hr>
+
+      <h3>Competitor App 1</h3>
+      <label>Title</label>
+      <input type="text" name="comp1_title">
+      <label>Subtitle</label>
+      <input type="text" name="comp1_subtitle">
+      <label>Long Description</label>
+      <textarea name="comp1_description" rows="3"></textarea>
+
+      <h3>Competitor App 2</h3>
+      <label>Title</label>
+      <input type="text" name="comp2_title">
+      <label>Subtitle</label>
+      <input type="text" name="comp2_subtitle">
+      <label>Long Description</label>
+      <textarea name="comp2_description" rows="3"></textarea>
+
+      <h3>Competitor App 3</h3>
+      <label>Title</label>
+      <input type="text" name="comp3_title">
+      <label>Subtitle</label>
+      <input type="text" name="comp3_subtitle">
+      <label>Long Description</label>
+      <textarea name="comp3_description" rows="3"></textarea>
+
+      <button type="submit" class="submit-btn">Analyze</button>
+    </form>
+  </div>
+</body>
+</html>

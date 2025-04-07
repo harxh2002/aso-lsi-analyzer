@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASO LSI Analyzer Results</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+      padding: 2rem;
+      color: #333;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .section {
+      background: white;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 1000px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    .highlight {
+      background-color: #d4edda;
+      font-weight: bold;
+    }
+    .download-btn {
+      display: block;
+      width: max-content;
+      margin: 1rem auto;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .download-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>ASO LSI Keyword Analyzer Results</h1>
+
+  <div class="section">
+    <h2>AI Suggestions</h2>
+    <p><strong>Title Suggestion:</strong> {{ ai_suggestions.title }}</p>
+    <p><strong>Subtitle Suggestion:</strong> {{ ai_suggestions.subtitle }}</p>
+    <p><strong>Description Suggestion:</strong> {{ ai_suggestions.description }}</p>
+  </div>
+
+  <div class="section">
+    <h2>Keyword Occurrence Count</h2>
+    <table>
+      <tr>
+        <th>Keyword</th>
+        <th>Your App</th>
+        <th>Competitor 1</th>
+        <th>Competitor 2</th>
+        <th>Competitor 3</th>
+        <th>Overall Total</th>
+      </tr>
+      {% for kw, counts in keyword_occurrences.items() %}
+      <tr class="{% if counts.Overall >= 3 %}highlight{% endif %}">
+        <td>{{ kw }}</td>
+        <td>{{ counts.YourApp }}</td>
+        <td>{{ counts.Competitor1 }}</td>
+        <td>{{ counts.Competitor2 }}</td>
+        <td>{{ counts.Competitor3 }}</td>
+        <td>{{ counts.Overall }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Metadata Analysis</h2>
+    {% for section, data in lsi_analysis.items() %}
+      <h3>{{ section|capitalize }} Keywords</h3>
+      <ul>
+        {% for item in data %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+  </div>
+
+  <a class="download-btn" href="/download_csv">⬇️ Download CSV</a>
+</body>
+</html>
